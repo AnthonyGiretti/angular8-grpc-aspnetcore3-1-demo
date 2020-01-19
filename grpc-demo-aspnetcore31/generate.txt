@@ -1,0 +1,1 @@
+protoc --plugin=protoc-gen-ts="E:\Codes sources\angular8-grpc-aspnetcore3-1-demo\grpc-demo-aspnetcore31\node_modules\.bin\protoc-gen-ts.cmd" --js_out="import_style=commonjs,binary:src/app/generated" --ts_out="service=grpc-web:src/app/generated" src/app/protos/country.proto
