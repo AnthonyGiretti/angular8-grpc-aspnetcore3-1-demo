@@ -34,7 +34,7 @@ On Windows your have to use the absolute path to **protoc-gen-ts** node module, 
 ```
 protoc --plugin=protoc-gen-ts="{ABSOLUTEPATH}\node_modules\.bin\protoc-gen-ts.cmd" 
        --js_out="import_style=commonjs,binary:src/app/generated" 
-        --ts_out="service=grpc-web:src/app/generated" src/app/protos/{YOURPROTOFILENAME}.proto
+       --ts_out="service=grpc-web:src/app/generated" src/app/protos/{YOURPROTOFILENAME}.proto
 ```
 
 You'll probably have to fix in your generated services file the path of your dependency, extra folder levels have been added in my case
