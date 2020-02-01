@@ -31,13 +31,16 @@ Execute in **src** root folder this command:
 
 On Windows your have to use the absolute path to **protoc-gen-ts** node module, and use **.cmd** extension
 
-```protoc --plugin=protoc-gen-ts="{ABSOLUTEPATH}\node_modules\.bin\protoc-gen-ts.**cmd**" --js_out="import_style=commonjs,binary:src/app/generated" --ts_out="service=grpc-web:src/app/generated" src/app/protos/{YOURPROTOFILENAME}.proto```
+```protoc --plugin=protoc-gen-ts="{ABSOLUTEPATH}\node_modules\.bin\protoc-gen-ts.**cmd**" 
+          --js_out="import_style=commonjs,binary:src/app/generated" 
+          --ts_out="service=grpc-web:src/app/generated" src/app/protos/{YOURPROTOFILENAME}.proto```
 
 You'll probably have to fix in your generated services file the path of your dependency, extra folder levels have been added in my case
 
 In your yourprotoname_pb_service.d.ts and yourprotoname_pb_service.js remove extra folders level like this:
 
 ```import * as src_app_protos_yourprotoname_pb from "../generated/yourprotoname_pb";```
+
 ```var src_app_protos_yourprotoname_pb = require("../generated/yourprotoname_pb");```
 
 ## Step 5
