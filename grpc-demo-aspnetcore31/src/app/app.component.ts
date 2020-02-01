@@ -30,10 +30,8 @@ export class AppComponent implements OnInit {
             name: country.name,
             description: country.description
           }));
-        console.log(this.countries);
         }
       }
     });
-
   }
 }
