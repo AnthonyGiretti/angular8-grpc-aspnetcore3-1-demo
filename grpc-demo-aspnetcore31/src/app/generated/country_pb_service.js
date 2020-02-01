@@ -1,7 +1,7 @@
 // package: 
 // file: src/app/protos/country.proto
 
-var src_app_protos_country_pb = require("../../../src/app/protos/country_pb");
+var src_app_protos_country_pb = require("../generated/country_pb");
 var grpc = require("@improbable-eng/grpc-web").grpc;
 
 var CountryService = (function () {
