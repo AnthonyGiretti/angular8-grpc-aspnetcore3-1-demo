@@ -16,10 +16,10 @@ export class AppComponent implements OnInit {
 
   public ngOnInit() {
 
-    const getBookRequest = new EmptyRequest();
+    const getCountryRequest = new EmptyRequest();
 
     grpc.unary(CountryService.GetAll, {
-      request: getBookRequest,
+      request: getCountryRequest,
       host: "https://localhost:5001",
       onEnd: res => {
         const { status, statusMessage, headers, message, trailers } = res;
