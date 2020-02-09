@@ -3,6 +3,8 @@ Angular 8 + gRPC-web & ASP.NET Core 3.1 + protoc + ts-protoc-gen
 
 This demo show **on Windows** how to generate entities from protos with protoc and ts-protoc-gen plugin to make gRPC-web working
 
+**This demo works with any gRPC-web technology in back-end**
+
 ## Step 1
 
 Clone the repository https://github.com/AnthonyGiretti/aspnetcore3-grpc-samples and run it (don't forget to install the database)
