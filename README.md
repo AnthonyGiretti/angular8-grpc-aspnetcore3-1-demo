@@ -7,7 +7,7 @@ This demo show **on Windows** how to generate entities from protos with protoc a
 
 ## Step 1
 
-Clone the repository https://github.com/AnthonyGiretti/aspnetcore3-grpc-samples and run it (don't forget to install the database)
+Clone the repository https://github.com/AnthonyGiretti/aspnetcore3-grpc-samples and run it (don't forget to install the database else by default in-memory is used)
 
 ## Step 2
 
