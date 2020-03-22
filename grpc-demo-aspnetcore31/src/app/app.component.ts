@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
 
     grpc.unary(CountryService.GetAll, {
       request: getCountryRequest,
-      host: "https://localhost:5001",
+      host: "https://demogrpcweblinux.azurewebsites.net", //https://grpcwebdemo.azurewebsites.net (Windows App Service)
       onEnd: res => {
         const { status, statusMessage, headers, message, trailers } = res;
         if (status === grpc.Code.OK && message) {
