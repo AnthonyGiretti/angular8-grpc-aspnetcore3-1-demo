@@ -50,6 +50,7 @@ export class AppComponent implements OnInit {
           const result = message.toObject() as CountriesReply.AsObject;
           this.countries = result.countriesList.map(country =>
             ({
+              id: country.id,
               name: country.name,
               description: country.description
             }) as CountryModel);
@@ -67,6 +68,7 @@ export class AppComponent implements OnInit {
           const result = message.toObject() as CountriesReply.AsObject;
           this.countries = result.countriesList.map(country =>
             ({
+              id: country.id,
               name: country.name,
               description: country.description
             }) as CountryModel);
@@ -84,6 +86,7 @@ export class AppComponent implements OnInit {
           const result = message.toObject() as CountriesReply.AsObject;
           this.countries = result.countriesList.map(country =>
             ({
+              id: country.id,
               name: country.name,
               description: country.description
             }) as CountryModel);
