@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {grpc} from '@improbable-eng/grpc-web';
 import {CountryService} from './generated/country_pb_service';
-import {EmptyRequest, CountriesReply, CountryCreateRequest} from './generated/country_pb';
+import { EmptyRequest, CountriesReply, CountryCreateRequest,
+  CountrySearchRequest, CountryReply, CountryRequest,
+  EmptyReply } from './generated/country_pb';
 import { CountryModel } from './models/countryModel';
 
 @Component({
