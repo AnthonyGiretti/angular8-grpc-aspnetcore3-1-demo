@@ -1,4 +1,4 @@
-// package: 
+// package: v1
 // file: src/app/protos/country.proto
 
 import * as src_app_protos_country_pb from "../generated/country_pb";
@@ -11,6 +11,15 @@ type CountryServiceGetAll = {
   readonly responseStream: false;
   readonly requestType: typeof src_app_protos_country_pb.EmptyRequest;
   readonly responseType: typeof src_app_protos_country_pb.CountriesReply;
+};
+
+type CountryServiceGetAllStreamed = {
+  readonly methodName: string;
+  readonly service: typeof CountryService;
+  readonly requestStream: false;
+  readonly responseStream: true;
+  readonly requestType: typeof src_app_protos_country_pb.EmptyRequest;
+  readonly responseType: typeof src_app_protos_country_pb.CountryReply;
 };
 
 type CountryServiceGetById = {
@@ -52,6 +61,7 @@ type CountryServiceDelete = {
 export class CountryService {
   static readonly serviceName: string;
   static readonly GetAll: CountryServiceGetAll;
+  static readonly GetAllStreamed: CountryServiceGetAllStreamed;
   static readonly GetById: CountryServiceGetById;
   static readonly Create: CountryServiceCreate;
   static readonly Update: CountryServiceUpdate;
@@ -99,6 +109,7 @@ export class CountryServiceClient {
     requestMessage: src_app_protos_country_pb.EmptyRequest,
     callback: (error: ServiceError|null, responseMessage: src_app_protos_country_pb.CountriesReply|null) => void
   ): UnaryResponse;
+  getAllStreamed(requestMessage: src_app_protos_country_pb.EmptyRequest, metadata?: grpc.Metadata): ResponseStream<src_app_protos_country_pb.CountryReply>;
   getById(
     requestMessage: src_app_protos_country_pb.CountrySearchRequest,
     metadata: grpc.Metadata,

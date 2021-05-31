@@ -1,4 +1,4 @@
-// package: 
+// package: v1
 // file: src/app/protos/country.proto
 
 import * as jspb from "google-protobuf";

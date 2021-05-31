@@ -1,4 +1,4 @@
-// package: 
+// package: v1
 // file: src/app/protos/country.proto
 
 var src_app_protos_country_pb = require("../generated/country_pb");
@@ -6,7 +6,7 @@ var grpc = require("@improbable-eng/grpc-web").grpc;
 
 var CountryService = (function () {
   function CountryService() {}
-  CountryService.serviceName = "CountryService";
+  CountryService.serviceName = "v1.CountryService";
   return CountryService;
 }());
 
@@ -17,6 +17,15 @@ CountryService.GetAll = {
   responseStream: false,
   requestType: src_app_protos_country_pb.EmptyRequest,
   responseType: src_app_protos_country_pb.CountriesReply
+};
+
+CountryService.GetAllStreamed = {
+  methodName: "GetAllStreamed",
+  service: CountryService,
+  requestStream: false,
+  responseStream: true,
+  requestType: src_app_protos_country_pb.EmptyRequest,
+  responseType: src_app_protos_country_pb.CountryReply
 };
 
 CountryService.GetById = {
@@ -88,6 +97,45 @@ CountryServiceClient.prototype.getAll = function getAll(requestMessage, metadata
   return {
     cancel: function () {
       callback = null;
+      client.close();
+    }
+  };
+};
+
+CountryServiceClient.prototype.getAllStreamed = function getAllStreamed(requestMessage, metadata) {
+  var listeners = {
+    data: [],
+    end: [],
+    status: []
+  };
+  var client = grpc.invoke(CountryService.GetAllStreamed, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onMessage: function (responseMessage) {
+      listeners.data.forEach(function (handler) {
+        handler(responseMessage);
+      });
+    },
+    onEnd: function (status, statusMessage, trailers) {
+      listeners.status.forEach(function (handler) {
+        handler({ code: status, details: statusMessage, metadata: trailers });
+      });
+      listeners.end.forEach(function (handler) {
+        handler({ code: status, details: statusMessage, metadata: trailers });
+      });
+      listeners = null;
+    }
+  });
+  return {
+    on: function (type, handler) {
+      listeners[type].push(handler);
+      return this;
+    },
+    cancel: function () {
+      listeners = null;
       client.close();
     }
   };
